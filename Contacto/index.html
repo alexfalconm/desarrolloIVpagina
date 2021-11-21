@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <h1>Formulario de Contacto</h1>
+    <form action="php/contacto.php" class="container g-3 needs-validation" id="form_contacto" novalidate onsubmit="return validarmail()">
+       <div class="form-group">
+            <label for="">Asunto:</label>
+            <input type="text" name="asunto" maxlength="45" id="asunto" required class="form-control" placeholder="Ingrese el asunto">
+        <div class="invalid-feedback">
+            Ingrese el asunto. No puede tener más de 45 carácteres.
+        </div>
+       </div>
+       <div class="form-group">
+        <label for="Email">Email:</label>
+        <input type="email" name="mail" maxlenght="45" id="email" required class="form-control" placeholder="Ingrese su email">
+        <div class="invalid-feedback">
+            Ingrese un email válido.
+        </div>
+   </div>
+   <div class="form-group">
+    <label for="Email">Reingresar email:</label>
+    <input type="email" name="mail" maxlenght="45" id="reemail" required class="form-control" placeholder="Reingrese su email">
+    <div class="invalid-feedback">
+        No coinciden los emails.
+    </div>
+    
+</div>
+   <div class="form-group">
+    <label for="Mensaje">Mensaje:</label>
+    <textarea name="mensaje" class="form-control" maxlength="255" id="mensaje" rows="5" placeholder="Ingrese su mensaje" required></textarea>
+    <div class="invalid-feedback">
+        Ingrese el mensaje. Ingrese un texto menor a 255 caracteres.
+    </div>
+</div>
+
+    <input type="submit" value="Enviar">
+    </form>
+    <script src="js/bootstrap.bundle.js"></script>
+
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()  
+
+function enviar()
+{
+    
+    alert("No coinciden los mails ");
+}
+function servidor()
+{
+
+}
+
+function validarmail()
+{  validar_email=false
+   var email1=document.forms["form_contacto"]["email"].value;
+   var email2=document.forms["form_contacto"]["reemail"].value;
+    alert(email1);
+    if (email1==email2)
+       {
+        alert("La dirección de email es correcta.");
+        validar_email=true;
+       } 
+    else
+        alert("La dirección de email no coincide.");
+    return validar_email;
+}
+    </script>
+</body>
+</html>
